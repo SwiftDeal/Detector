@@ -1,0 +1,87 @@
+<div id="create_trigger" class="cb fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <form class="form-inline" action="" method="post">
+        <div class="modal-content">
+            <div class="ri">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><center>Creating New Action Rule</center></h4>
+            </div>
+            <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="exampleInputName2">Trigger</label>
+                        <select   id="trigger">
+                        <option>Choose Trigger</option>
+                        <option value="1">Everyone Else</option>
+                        <option value="2">Location</option>
+                        <option value="3">Landing Page</option>
+                        <option value="6">Time of Visit</option>
+                        <option value="7">Bots</option>
+                        <option value="8">Whois</option>
+                        <option value="9">User-Agent</option>
+                        <option value="10">Browser</option>
+                        <option value="11">Operating System</option>
+                        <option value="12">Device Type</option>
+                        <option value="13">Referrer</option>
+                        <option value="14">Incoming Search Term</option>
+                        <option value="15">IP Range</option>
+                        <option value="16">Active Login</option>
+                        <option value="17">Javascript Enabled</option>
+                        <option value="18">Repeat Visitor</option>
+                        <option value="19">Custom Javascript</option>
+                        <option value="20">Custom PHP</option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="exampleInputEmail2">Action</label>
+                    <select id="action">
+                        <option >Choose Action</option>
+                        <option value="1">Do Nothing</option>
+                        <option value="2">Wait</option>
+                        <option value="3">Redirect</option>
+                        <option value="4">POST Values</option>
+                        <option value="5">Overlay Iframe</option>
+                        <option value="6">Popup</option>
+                        <option value="7">Hide Content</option>
+                        <option value="8">Replace Content</option>
+                        <option value="9">Send Email</option>
+                        <option value="10">Run Javascript</option>
+                        <option value="11">Run PHP</option>
+                    </select>
+                </div>
+                <div class="modal-body">
+                    <div class="anv aky ala" id="trigger_line">
+                          <h3 class="anw anx">Trigger Rule</h3>
+                    </div>
+                    <div id="trigger_" class="form-inline">
+                    <span id="trigger_design">
+                            
+                        </span>
+                        <span id="trigger_hints">
+                            
+                        </span>
+                    </div>
+                    <div class="anv aky ala" id="action_line">
+                          <h3 class="anw anx">Action Rules</h3>
+                    </div>
+                    <div id="action_">
+                        <span id="action_design">
+                            
+                        </span>
+                        <span id="action_hints">
+                            
+                        </span>
+                    </div>
+                </div>
+            
+        </div>
+        <div class="rj">
+            <input type="hidden" name="trigger" value="" id="trig_val">
+            <input type="hidden" name="action" value="" id="act_val">
+            <input type="hidden" name="create" value="rule">
+            <button type="button" class="ce fh" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="ce fh" >Create Rule</button>
+        </div>
+    </div>
+    </form>
+</div>
+</div>
