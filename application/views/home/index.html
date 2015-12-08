@@ -124,30 +124,21 @@
         </tr>
       </thead>
       <tbody>
-
+      {if isset($trigger)}
+      {foreach $trigg in $trigger}
+      {script $action = Action::first(array('id'=>$trigg->action))}
         <tr>
-          <td> Bot</td>
-          <td>POST</td>
-          <td>
-            name=meraj<br/>
-            password=abc123<br/>
-            key=api.1234tfy
-         </td>
-          <td>01/01/2015</td>
-          <td><a href="/home/?action=deleteTrigger&trigger_id=1">Close</a></td>
+          <td>$trigg->name</td>
+          <td>$action->name</td>
+          <td>$action->rule</td>
+          <td>$action->created</td>
+          <td><a href="home?action=deleteTrigger&trigger_id={$trigg->id}">Close</a></td>
         </tr>
-
-        <tr>
-          <td> Users</td>
-          <td>Redirect to</td>
-          <td>
-            www.cloudstuffs.xyz
-         </td>
-          <td>01/01/2015</td>
-          <td><a href="/home/?action=deleteTrigger&trigger_id=1">Close</a></td>
-        </tr>
-
-
+        {/foreach}
+      {/if}
+      {else}
+      <tr><td><center>You have no Action Active</center></td></tr>
+      {/else}
         </tbody>
     </table>
   </div>

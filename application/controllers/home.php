@@ -8,7 +8,7 @@
 use Shared\Controller as Controller;
 use Framework\RequestMethods as RequestMethods;
 use Framework\Registry as Registry;
-
+use WebBot\lib\WebBot\Bot as Bot;
 class Home extends Controller {
 	/**
      * @before _secure
@@ -170,13 +170,19 @@ class Home extends Controller {
 				// echo $trig_vals;
     	}
 
+/*
+    	if(RequestMethods::get("action")=="deleteTrigger"){
+    		$trig_id= RequestMethods::get("trigger_id");
+    		$trigger = Trigger::first(array("id = ?" => $trig_id));
+    		$trigger->live=0;
+    		$trigger->save();
+    		self::redirect("SwiftDetector/home");
 
-
+    	}
+    	*/
 
     	$triggers = Trigger::all();
-    	$actions   = Action::all();
     	$view->set("trigger", $triggers);
-    	$view->set("action", $actions);
     }
 
 
@@ -207,19 +213,21 @@ class Home extends Controller {
         $visiting_time= date("G:i", strtotime($time));
         $redirect_to="https://www.cloudstuffs.com";
         $range = "116.202.29.135/116.202.33.200";
-        $iprange = $this->ip_in_range($ip, $range);
-        if(strtolower($browser)=="firefox")
-        {	echo "yes its firefox";
-        	//$this->sendmail("msiddiqui.jmi@gmail.com", "Access Notification","A user has logged your websiite using mozilla firefox");
+        $iprange = $this->ip_in_range($ip, $range); //It will rturn true or false
+
+
+        $bot = new Bot(array('user-agent' => "http://www.useragentstring.com/?uas=".htmlentities($_SERVER['HTTP_USER_AGENT'])."&getText=".htmlentities($_SERVER['HTTP_USER_AGENT'])));
+		$bot->execute();
+
+		$doc = array_shift($bot->getDocuments());
+		$response= $doc->getHttpResponse()->getBody();
+		var_dump($response);
+
+
+        $trigger = Trigger::all();
+
         
-        }
-    	/**
-    	*Here perform the action to blah  blah
-    	*/
-    	
-    	header("Location: http://$landing_page?visitor=$ip");
-    	/*At the end */
-    	
+
     }
 
 
